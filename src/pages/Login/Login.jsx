@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
-import {Link } from 'react-router-dom'
+import {Link, useNavigate } from 'react-router-dom'
 import {MdOutlinePassword} from 'react-icons/md'
 import {FiMail} from 'react-icons/fi'
 import axios from 'axios'
 
-const Login = () => {    
+const Login = () => {
+    const navigate = useNavigate()
     const [loginUser, setLoginUser] = useState({
         email:"",
         password:"",
@@ -18,12 +19,13 @@ const Login = () => {
         const {email, password} = loginUser;
         try {
             if(email && password){
-                await axios.post('/api/v1/login', loginUser).then((res) =>{ 
+                await axios.post(`${process.env.REACT_APP_SERVER}/login`, loginUser).then((res) =>{ 
                     if(res.status === 200){
                         const message = res.data.message;
                         console.log(res)
-                        alert(message)    
-                    }               
+                        alert(message)
+                        navigate('/')
+                    }           
                 })
             }
         } catch (error) {

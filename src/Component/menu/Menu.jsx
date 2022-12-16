@@ -42,7 +42,9 @@ const Menu = () => {
               <motion.div
                 initial={{ x:"-100%", opacity: 0 }}
                 whileInView={{ x: "0%", opacity: 1 }}
+                key={i}
                 className='flex flex-col items-center pb-5 overflow-hidden rounded-2xl border-4 border-gray-200  w-[18rem] lg:w-[20rem] h-auto'>
+                  
                 <h2 className="self-start bg-red-700 pl-5 py-2 text-white w-full">
                   #item {item.Num}
                 </h2>

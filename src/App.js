@@ -1,4 +1,6 @@
-import React from 'react'
+import React,{useEffect} from 'react'
+import {LoadUser} from './store/action/userAction.js'
+import {useDispatch, useSelector} from 'react-redux'
 import { Route, Routes } from 'react-router-dom';
 import Footer from './Component/footer/Footer';
 import Header from './Component/Header/Header';
@@ -21,7 +23,13 @@ import Loader from './pages/Loader/Loader';
 import Ragister from './pages/ragister/Ragister';
 
 const App = () => {
-  
+
+const dispatch = useDispatch()
+
+useEffect(() => {
+  dispatch(LoadUser())
+}, [dispatch])
+
   return (
     <div>
       <Header />

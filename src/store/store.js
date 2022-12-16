@@ -1,12 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import usersReducer from './usersReducer'
-import postsReducer from './postsReducer'
+import {loadUserReducer} from './reducer/userReducer.js'
 
-const store = configureStore({
-    
-  reducer: {
-
+export const store = configureStore({
+  reducer:{
+    auth:loadUserReducer,  
   }
 })
 
-export default store;
